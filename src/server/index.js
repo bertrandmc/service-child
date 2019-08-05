@@ -5,7 +5,7 @@ import { routeHandler } from './route-handler';
 const index = express();
 index
   .disable('x-powered-by')
-  .use(express.static(path.join(__dirname, "dist")))
-  .get('/overview', routeHandler);
+  .use(express.static(path.join(process.cwd(), "build/client")))
+  .get('/Overview', routeHandler);
 
 export default index;

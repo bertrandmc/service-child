@@ -1,9 +1,5 @@
 import React from 'react';
-import styled from "styled-components";
-
-const Wrapper = styled.div`
-  border: 1px solid black;
-`;
+import { Button} from 'culturetrip-ui/dist/components/Button';
 
 export class Overview extends React.Component {
   componentDidMount() {
@@ -12,14 +8,10 @@ export class Overview extends React.Component {
 
   render() {
     return (
-      <Wrapper>
+      <div>
         <h1>Overview</h1>
-        EMBEDDED COMPONENT!!
-      </Wrapper>
+        <Button variant="primary" type="button" size="medium" onClick={() => console.log('clicked')}>Click</Button>
+      </div>
     );
   }
-}
-
-if (typeof window !== 'undefined') {
-  window.Overview = Overview;
 }

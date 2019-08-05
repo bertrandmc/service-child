@@ -4,9 +4,7 @@ let app = require('./server').default;
 
 const server = http.createServer(app);
 
-let currentApp = app;
-
-const port = process.env.PORT || 3001;
+const port = process.env.PORT;
 
 server.listen(port, error => {
   if (error) {
@@ -15,20 +13,3 @@ server.listen(port, error => {
 
   console.log(`🚀 started on ${port}`);
 });
-
-if (module.hot) {
-  console.log('✅  Server-side HMR Enabled!');
-
-  module.hot.accept('./server', () => {
-    console.log('🔁  HMR Reloading `./server`...');
-
-    try {
-      app = require('./server').default;
-      server.removeListener('request', currentApp);
-      server.on('request', app);
-      currentApp = app;
-    } catch (error) {
-      console.error(error);
-    }
-  });
-}

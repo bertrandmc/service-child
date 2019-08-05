@@ -1,18 +1,23 @@
 const path = require('path');
 
 module.exports = {
-  entry: path.join(__dirname, "src/shared/Overview.js"),
+  devtool: "source-map",
+  mode: "production",
+  entry: "./src/shared/Overview.js",
   output: {
-    library: 'overview',
+    library: 'Overview',
     libraryTarget: 'umd',
     filename: 'Overview.js',
-    path: path.resolve(__dirname, "dist/")
+    path: path.resolve(__dirname, "build/client")
   },
   module: {
     rules: [
       {
-        test: /\.(js|jsx)$/,
-        exclude: /node_modules/,
+        test: /\.js$/,
+        include: [
+          path.join(__dirname, 'src'),
+          path.join(__dirname, 'node_modules/culturetrip-ui')
+        ],
         use: {
           loader: "babel-loader"
         }
@@ -20,7 +25,7 @@ module.exports = {
     ]
   },
   resolve: {
-    extensions: [".js", ".jsx"]
+    extensions: [".js"]
   },
   externals: {
     react: {
