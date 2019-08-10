@@ -5,20 +5,21 @@ import { Overview } from '../shared/Overview';
 
 export const renderAppMarkupAndStyles = () => {
   const sheet = new ServerStyleSheet();
-  let markup;
-  let styleTags;
+  let html;
+  let styles;
   try {
-    markup = renderToString(sheet.collectStyles(
+    html = renderToString(sheet.collectStyles(
       <Overview />
     ));
-    styleTags = sheet.getStyleTags();
+    styles = sheet.getStyleTags();
   } catch (error) {
     console.error(error)
   } finally {
     sheet.seal()
   }
   return {
-    markup,
-    styleTags
+    html,
+    styles,
+    scriptUrls: ['http://localhost:3002/Overview.js']
   }
 };

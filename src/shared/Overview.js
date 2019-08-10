@@ -2,10 +2,6 @@ import React from 'react';
 import { Button} from 'culturetrip-ui/dist/components/Button';
 
 export class Overview extends React.Component {
-  componentDidMount() {
-    console.log('Overview mounted!')
-  }
-
   render() {
     return (
       <div>
